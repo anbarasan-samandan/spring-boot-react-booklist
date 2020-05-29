@@ -4,17 +4,11 @@
   "scripts": {
     "start": "run-p start:dev",
     "start:dev": "webpack-dev-server --config webpack.config.dev.js --port 3000",
-    "start:api": "node src/server/BooksServices.js",
     "clean:build": "rimraf ./build && mkdir build",
     "prebuild": "run-p clean:build",
     "build": "webpack --config webpack.config.prod.js",
-    "postbuild": "run-p start:api serve:build",
+    "postbuild": "run-p serve:build",
     "serve:build": "http-server ./build"
-  },
-  "proxy": {
-    "/*": {
-      "target": "http://localhost:8080"
-    }
   },
   "dependencies": {
     "axios": "^0.19.2",
